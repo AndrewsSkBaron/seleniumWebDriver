@@ -12,19 +12,20 @@ import java.util.concurrent.TimeUnit;
 import static org.junit.Assert.assertEquals;
 
 public class LoginPageTestFireFox {
+
     private WebDriver driver;
     private WebDriverWait wait;
     private LoginPage loginPage;
 
     @BeforeEach
     public void setUp() {
-        System.setProperty("webdriver.gecko.driver", "C:\\Users\\AndreiBaron\\IdeaProjects\\seleniumWebDriver\\src\\main\\resources\\drivers\\geckodriver\\geckodriver.exe");
+        String path = "src/main/resources/drivers/geckodriver/geckodriver.exe";
+        System.setProperty("webdriver.gecko.driver", path);
         driver = new FirefoxDriver();
         loginPage = new LoginPage(driver);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
         driver.get("https://mail.yandex.com/");
-
         wait = new WebDriverWait(driver, 10);
     }
 
