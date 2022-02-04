@@ -12,6 +12,7 @@ import java.util.concurrent.TimeUnit;
 import static org.junit.Assert.assertEquals;
 
 public class LoginPageTestFireFox {
+
     private WebDriver driver;
     private WebDriverWait wait;
     private LoginPage loginPage;
