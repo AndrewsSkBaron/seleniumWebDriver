@@ -2,7 +2,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class LoginPage {
-    private WebDriver driverFireFox;
+    private WebDriver driver;
 
     private By loginField = By.xpath("//input[@id='passp-field-login']");
 
@@ -18,23 +18,23 @@ public class LoginPage {
     private By errorPassword = By.xpath("//div[@id='field:input-passwd:hint']");
 
     public LoginPage(WebDriver driver) {
-        this.driverFireFox = driver;
+        this.driver = driver;
     }
 
     public LoginPage clickButton(){
-        driverFireFox.findElement(signInButtonOnHome).click();
+        driver.findElement(signInButtonOnHome).click();
         return this;
     }
 
     public LoginPage typeUsername(String username){
-        driverFireFox.findElement(loginField).sendKeys(username);
-        driverFireFox.findElement(signInButton).click();
+        driver.findElement(loginField).sendKeys(username);
+        driver.findElement(signInButton).click();
         return this;
     }
 
     public LoginPage typePassword(String password){
-        driverFireFox.findElement(passwordField).sendKeys(password);
-        driverFireFox.findElement(signInButton).submit();
+        driver.findElement(passwordField).sendKeys(password);
+        driver.findElement(signInButton).submit();
         return this;
     }
 
@@ -42,24 +42,24 @@ public class LoginPage {
         this.clickButton();
         this.typeUsername(username);
         this.typePassword(password);
-        return new LoginPage(driverFireFox);
+        return new LoginPage(driver);
     }
 
 
     public String getInboxText(){
-        return driverFireFox.findElement(inbox).getText();
+        return driver.findElement(inbox).getText();
     }
 
     public String getHeadingText(){
-        return driverFireFox.findElement(heading).getText();
+        return driver.findElement(heading).getText();
     }
 
     public String getErrorLoginText(){
-        return driverFireFox.findElement(errorLogin).getText();
+        return driver.findElement(errorLogin).getText();
     }
 
     public String getErrorPasswordText(){
-        return driverFireFox.findElement(errorPassword).getText();
+        return driver.findElement(errorPassword).getText();
     }
 
 
