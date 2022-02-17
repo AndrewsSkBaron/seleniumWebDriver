@@ -1,4 +1,4 @@
-package scripts;
+package com.seleniumWebDriver.ojb;
 
 public class ObjectOfEmployees {
     private String name;
