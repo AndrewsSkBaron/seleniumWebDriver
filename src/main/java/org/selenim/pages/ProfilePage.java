@@ -9,7 +9,7 @@ public class ProfilePage {
     /*Page Object*/
     private static ProfilePage profilePage;
     private WebDriver driver;
-
+    private WebDriverWait wait;
     private By userIcon = By.xpath("//div[@class='legouser legouser_fetch-accounts_yes legouser_hidden_yes i-bem']/a[1]");
     private By logOutLink = By.xpath("//a[@aria-label='Log out']");
     private By logOutLinkText = By.xpath("//a[@aria-label='Log out']/span");
@@ -27,7 +27,7 @@ public class ProfilePage {
     }
 
     public ProfilePage clickUserIcon(){
-        WebDriverWait wait = new WebDriverWait(driver, 3);
+        wait = new WebDriverWait(driver, 30);
         wait.until(visibilityOfElementLocated(By.xpath("//span[@class='user-account__name']")));
         driver.findElement(userIcon).click();
         return this;
