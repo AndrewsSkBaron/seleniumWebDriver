@@ -5,7 +5,6 @@ import org.openqa.selenium.WebDriver;
 
 public class LogInPage {
     /*Page Object*/
-    private static LogInPage logInPage;
     private WebDriver driver;
 
     private By signInButtonOnHome = By.xpath("//div[@class='HeadBanner-ButtonsWrapper']/a[2]");
@@ -17,7 +16,7 @@ public class LogInPage {
     private By errorLogin= By.xpath("//div[@id='field:input-login:hint']");
     private By errorPassword = By.xpath("//div[@id='field:input-passwd:hint']");
 
-    private LogInPage(WebDriver driver) {
+    public LogInPage(WebDriver driver) {
         this.driver = driver;
     }
 
@@ -38,18 +37,9 @@ public class LogInPage {
         return this;
     }
 
-
     public String getInboxText(){
         return driver.findElement(logInTitle).getText();
     }
-
-    public static LogInPage getLogInPage(WebDriver driver) {
-        if (logInPage == null) {
-            logInPage = new LogInPage(driver);
-        }
-        return logInPage;
-    }
-
 
     public LogInPage loginWithData(String username, String password){
         this.clickButton();
