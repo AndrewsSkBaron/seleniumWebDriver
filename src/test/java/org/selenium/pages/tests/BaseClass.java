@@ -10,9 +10,9 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.selenim.pages.LogInPage;
 import org.selenim.pages.ProfilePage;
-import org.selenim.pages.Screenshot;
+import org.selenim.pages.WebDriverUtils;
 
-import java.time.Duration;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.params.provider.Arguments.arguments;
@@ -23,16 +23,16 @@ public abstract class BaseClass {
     protected static WebDriverWait wait;
     protected static LogInPage logInPage;
     protected static ProfilePage profilePage;
-    protected static Screenshot screenshot;
+    protected static WebDriverUtils screenshot;
     private static String urlLogIn = "https://mail.yandex.com/";
     private static String path = "src/main/resources/drivers/geckodriver/geckodriver.exe";
     private static String gecko = "webdriver.gecko.driver";
-    private static String username = "LoginTestDriver2";
-    private static String password = "test20102";
+    private static String username = "LoginTestDriver1";
+    private static String password = "test0102";
 
     public static Stream<Arguments> data() {
         return Stream.of(
-                arguments("LoginTestDriver2", "test20102")
+                arguments("LoginTestDriver1", "test0102")
         );
     }
 
@@ -41,14 +41,14 @@ public abstract class BaseClass {
     public static void setUp(){
         System.setProperty(gecko, path);
         driver = new FirefoxDriver();
-        screenshot = new Screenshot();
+        screenshot = new WebDriverUtils();
         logInPage = LogInPage.getLogInPage(driver);
         profilePage = ProfilePage.getProfilePage(driver);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
         driver.get(urlLogIn);
         logInPage.loginWithData(username, password);
-        wait = new WebDriverWait(driver,Duration.ofSeconds(10));
+        wait = new WebDriverWait(driver,10);
         wait.until(visibilityOfElementLocated(By.xpath("//span[@class='user-account__name']")));
         screenshot.makeScreen(driver);
         profilePage.actionLogOut();

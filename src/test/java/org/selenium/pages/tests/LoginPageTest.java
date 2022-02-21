@@ -14,7 +14,7 @@ public class LoginPageTest extends BaseClass {
     @Test
     public void checkLogIn(){
         String head = logInPage.getInboxText();
-        String inboxTitle = "LoginTestDriver2";
+        String inboxTitle = "LoginTestDriver1";
         assertEquals(head, inboxTitle);
     }
 

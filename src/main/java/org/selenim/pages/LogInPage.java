@@ -13,7 +13,7 @@ public class LogInPage {
     private By passwordField = By.xpath("//input[@id='passp-field-passwd']");
     private By signInButton = By.xpath(" //button[@id='passp:sign-in']");
     private By heading = By.xpath("//h1[contains(@class,'passp-title')]//span");
-    private By logInTitle = By.xpath("//span[normalize-space()='LoginTestDriver2']");
+    private By logInTitle = By.xpath("//span[normalize-space()='LoginTestDriver1']");
     private By errorLogin= By.xpath("//div[@id='field:input-login:hint']");
     private By errorPassword = By.xpath("//div[@id='field:input-passwd:hint']");
 
