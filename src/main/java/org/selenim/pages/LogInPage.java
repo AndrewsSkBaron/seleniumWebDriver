@@ -7,7 +7,6 @@ import org.openqa.selenium.support.PageFactory;
 
 public class LogInPage {
     /*Page Factory*/
-    private static LogInPage logInPage;
     private WebDriver driver;
 
     @FindBy(xpath = "//div[@class='HeadBanner-ButtonsWrapper']/a[2]")
@@ -56,16 +55,8 @@ public class LogInPage {
         return this;
     }
 
-
     public String getInboxText(){
         return logInTitle.getText();
-    }
-
-    public static LogInPage getLogInPage(WebDriver driver) {
-        if (logInPage == null) {
-            logInPage = PageFactory.initElements(driver, LogInPage.class);
-        }
-        return logInPage;
     }
 
     public LogInPage loginWithData(String username, String password){

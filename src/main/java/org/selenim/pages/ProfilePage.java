@@ -10,7 +10,6 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElem
 
 public class ProfilePage {
     /*Page Factory*/
-    private static ProfilePage profilePage;
     private WebDriver driver;
 
     @FindBy(xpath = "//div[@class='legouser legouser_fetch-accounts_yes legouser_hidden_yes i-bem']/a[1]")
@@ -22,20 +21,13 @@ public class ProfilePage {
     @FindBy(xpath = "//a[@aria-label='Log out']/span")
     private WebElement logOutLinkText;
 
-    private ProfilePage(WebDriver driver) {
+    public ProfilePage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
-    public static ProfilePage getProfilePage(WebDriver driver) {
-        if (profilePage == null) {
-            profilePage= new ProfilePage(driver);
-        }
-        return profilePage;
-    }
-
     public ProfilePage clickUserIcon(){
-        WebDriverWait wait = new WebDriverWait(driver, 3);
+        WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(visibilityOfElementLocated(By.xpath("//span[@class='user-account__name']")));
         userIcon.click();
         return this;
