@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 @TestMethodOrder(MethodOrderer.MethodName.class)
-public class LoginPageTest extends BaseClass {
+public class LoginPageTest extends BaseTest {
     private LogInPage logInPage;
     private ProfilePage profilePage;
     private String username = "LoginTestDriver2";

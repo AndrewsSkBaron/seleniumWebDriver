@@ -4,12 +4,9 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.selenim.driver.Driver;
 
-import java.util.concurrent.TimeUnit;
-
-public abstract class BaseClass {
+public abstract class BaseTest {
     protected static WebDriver driver;
     private static String urlLogIn = "https://mail.yandex.com/";
     private static String path = "src/main/resources/drivers/geckodriver/geckodriver.exe";
