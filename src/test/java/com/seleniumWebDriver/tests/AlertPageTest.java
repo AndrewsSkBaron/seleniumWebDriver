@@ -1,11 +1,12 @@
-package pagesTests;
+package com.seleniumWebDriver.tests;
 
 import org.junit.jupiter.api.Test;
 import com.seleniumWebDriver.pages.AlertPage;
 
+import static com.seleniumWebDriver.tests.UrlConstantsTest.urlAlert;
 import static org.junit.Assert.assertEquals;
 
-public class AlertTest extends BaseClass {
+public class AlertPageTest extends BaseTest {
     private AlertPage alertPage;
 
     @Test

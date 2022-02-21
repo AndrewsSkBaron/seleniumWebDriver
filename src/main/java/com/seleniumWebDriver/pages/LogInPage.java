@@ -2,6 +2,9 @@ package com.seleniumWebDriver.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LogInPage {
     private WebDriver driver;
@@ -33,8 +36,10 @@ public class LogInPage {
         return this;
     }
 
-    public String getLogInText(){
-        return driver.findElement(logInTitle).getText();
+    public String getLogInText(String username){
+        WebElement firstResult = new WebDriverWait(driver, 5)
+                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[normalize-space()='"+ username +"']")));
+        return firstResult.getText();
     }
 
     public LogInPage loginWithData(String username, String password){

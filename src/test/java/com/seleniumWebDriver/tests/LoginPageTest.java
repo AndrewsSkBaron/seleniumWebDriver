@@ -1,20 +1,25 @@
-package pagesTests;
+package com.seleniumWebDriver.tests;
 
+import com.seleniumWebDriver.pages.LogInPage;
+import org.junit.Before;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
 import java.util.stream.Stream;
 
+import static com.seleniumWebDriver.tests.UrlConstantsTest.urlLogIn;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
-public class LoginPageTest extends BaseClass{
+public class LoginPageTest extends BaseTest {
+    private static LogInPage loginPage;
+
+    @Before
+    public void getLogIn(String username, String password) {
+        loginPage = new LogInPage(driver);
+        loginPage.loginWithData(username,password);
+    }
 
     public static Stream<Arguments> data() {
         return Stream.of(
@@ -25,25 +30,22 @@ public class LoginPageTest extends BaseClass{
 
     @ParameterizedTest
     @MethodSource("data")
-    public void checkLogIn(String username, String password){
+    public void checkLogIn(String username, String password) {
         driver.get(urlLogIn);
-        loginPage.loginWithData(username,password);
+        getLogIn(username, password);
         String logInTitle = username;
-        /*explicit wait*/
-        WebElement firstResult = new WebDriverWait(driver, Duration.ofSeconds(5))
-                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[normalize-space()='"+ username +"']")));
-        assertEquals(logInTitle,firstResult.getText());
+        assertEquals(logInTitle, loginPage.getLogInText(username));
     }
 
     @ParameterizedTest
     @MethodSource("data")
     public void checkLogInThread(String username, String password) throws InterruptedException {
         driver.get(urlLogIn);
-        loginPage.loginWithData(username,password);
+        getLogIn(username, password);
         /*explicit wait*/
         String logInTitle = username;
         Thread.sleep(5000);
-        assertEquals(logInTitle,loginPage.getLogInText());
+        assertEquals(logInTitle, loginPage.getLogInText(username));
     }
 
 }

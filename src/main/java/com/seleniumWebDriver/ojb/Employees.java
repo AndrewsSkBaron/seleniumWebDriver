@@ -1,11 +1,11 @@
 package com.seleniumWebDriver.ojb;
 
-public class ObjectOfEmployees {
+public class Employees {
     private String name;
     private String position;
     private String office;
 
-    public ObjectOfEmployees(String name, String position, String office) {
+    public Employees(String name, String position, String office) {
         this.name = name;
         this.position = position;
         this.office = office;

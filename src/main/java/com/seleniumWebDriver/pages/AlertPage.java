@@ -6,8 +6,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
-
 public class AlertPage {
     private WebDriver driver;
     private WebDriverWait wait;
@@ -21,31 +19,31 @@ public class AlertPage {
         this.driver = driver;
     }
 
+    public Alert alertElement() {
+        wait = new WebDriverWait(driver, 5);
+        alert = wait.until(ExpectedConditions.alertIsPresent());
+        return alert;
+    }
+
     public String confirmBoxAccept() {
         driver.findElement(buttonBoxAccept).click();
-        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        alert = wait.until(ExpectedConditions.alertIsPresent());
-        text = alert.getText();
-        alert.accept();
+        text = alertElement().getText();
+        alertElement().accept();
         return text;
     }
 
     public String confirmBoxDismiss() {
         driver.findElement(buttonBoxDismiss).click();
-        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        alert = wait.until(ExpectedConditions.alertIsPresent());
-        text = alert.getText();
-        alert.dismiss();
+        text = alertElement().getText();
+        alertElement().dismiss();
         return text;
     }
 
     public String confirmAlertAccept() {
         driver.findElement(buttonAlertAccept).click();
-        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        alert = wait.until(ExpectedConditions.alertIsPresent());
-        alert.sendKeys("Click click!!!");
-        text = alert.getText();
-        alert.dismiss();
+        alertElement().sendKeys("Click click!!!");
+        text = alertElement().getText();
+        alertElement().dismiss();
         return text;
     }
 
