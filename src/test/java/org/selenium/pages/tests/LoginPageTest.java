@@ -18,12 +18,12 @@ import static org.junit.jupiter.params.provider.Arguments.arguments;
 public class LoginPageTest extends BaseTest {
     private LogInPage logInPage;
     private ProfilePage profilePage;
-    private String username = "LoginTestDriver2";
-    private String password = "test20102";
+    private String username = "LoginTestDriver1";
+    private String password = "test0102";
 
     public static Stream<Arguments> data() {
         return Stream.of(
-                arguments("LoginTestDriver2", "test20102")
+                arguments("LoginTestDriver1", "test0102")
         );
     }
 
@@ -33,7 +33,7 @@ public class LoginPageTest extends BaseTest {
         logInPage = new LogInPage(driver);
         logInPage.loginWithData(username, password);
         String head = logInPage.getInboxText();
-        String inboxTitle = "LoginTestDriver2";
+        String inboxTitle = "LoginTestDriver1";
         assertEquals(head, inboxTitle);
     }
 

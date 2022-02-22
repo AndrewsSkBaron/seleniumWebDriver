@@ -15,14 +15,14 @@ public abstract class BaseTest {
     @BeforeAll
     @MethodSource("data")
     public static void setUp() {
-        driver = Driver.getInstance().getWebDriver();
+        driver = Driver.getInstance();
         driver.get(urlLogIn);
         System.out.println("<----- | Browser Session Started | ----->");
     }
 
     @AfterAll
     public static void tearDown() {
-        driver.quit();
+        Driver.quit();
         System.out.println("<----- | Browser Session End | ----->");
     }
 }
