@@ -12,14 +12,14 @@ public class AlertPageTest extends BaseTest {
     @Test
     public void checkBoxAccept() {
         driver.get(urlAlert);
-        alertPage = new AlertPage(driver);
+        alertPage = new AlertPage(driver, wait);
         assertEquals("I am an alert box!", alertPage.confirmBoxAccept());
     }
 
     @Test
     public void checkBoxDismiss() {
         driver.get(urlAlert);
-        alertPage = new AlertPage(driver);
+        alertPage = new AlertPage(driver,wait);
         alertPage.confirmBoxAccept();
         assertEquals("Press a button!", alertPage.confirmBoxDismiss());
     }
@@ -27,7 +27,7 @@ public class AlertPageTest extends BaseTest {
     @Test
     public void checkAlertAccept() {
         driver.get(urlAlert);
-        alertPage = new AlertPage(driver);
+        alertPage = new AlertPage(driver,wait);
         alertPage.confirmAlertAccept();
         assertEquals("Please enter your name", alertPage.confirmAlertAccept());
     }

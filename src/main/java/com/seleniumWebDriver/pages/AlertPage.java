@@ -15,12 +15,12 @@ public class AlertPage {
     private Alert alert;
     private String text;
 
-    public AlertPage(WebDriver driver) {
+    public AlertPage(WebDriver driver,WebDriverWait wait) {
         this.driver = driver;
+        this.wait = wait;
     }
 
     public Alert alertElement() {
-        wait = new WebDriverWait(driver, 5);
         alert = wait.until(ExpectedConditions.alertIsPresent());
         return alert;
     }

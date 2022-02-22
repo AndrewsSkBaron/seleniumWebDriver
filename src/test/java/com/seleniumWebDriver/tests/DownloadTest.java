@@ -1,23 +1,20 @@
 package com.seleniumWebDriver.tests;
 
-import com.seleniumWebDriver.script.Download;
+import com.seleniumWebDriver.pages.DownloadPage;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
 import static com.seleniumWebDriver.tests.UrlConstantsTest.urlDownload;
 import static org.junit.Assert.assertTrue;
 
 public class DownloadTest extends BaseTest {
-    private Download download;
-    private By item = By.xpath("//input[@id='cricleinput']");
+    private DownloadPage download;
+    private int num;
 
     @Test
     public void checkSelectRandom() {
         driver.get(urlDownload);
-        download = new Download(driver);
-        WebElement element = driver.findElement(item);
-        int num = Integer.parseInt(element.getAttribute("value"));
+        download = new DownloadPage(driver, wait);
+        num = Integer.parseInt(download.download().getAttribute("value"));
         download.download();
         assertTrue(num == 0);
     }

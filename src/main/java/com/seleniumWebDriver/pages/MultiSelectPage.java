@@ -17,12 +17,13 @@ public class MultiSelectPage {
     private List<WebElement> itemsSelected;
     private Random random = new Random();
 
+
     public MultiSelectPage(WebDriver driver) {
         this.driver = driver;
     }
 
     public MultiSelectPage getRandomElement() {
-        select = new Select(driver.findElement(selectBy));
+        select = new Select(getSelectBy());
         button = driver.findElement(buttonBy);
         int size = select.getOptions().size();
         int lastLast = random.nextInt(size);
@@ -40,6 +41,10 @@ public class MultiSelectPage {
             button.click();
         }
         return this;
+    }
+
+    public WebElement getSelectBy() {
+        return driver.findElement(selectBy);
     }
 
     public List<WebElement> getSelectedElement() {

@@ -22,7 +22,7 @@ public abstract class BaseTest {
         driver = new FirefoxDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
-        wait = new WebDriverWait(driver, 5);
+        wait = new WebDriverWait(driver, 50);
         System.out.println("<----- | Browser Session Started | ----->");
     }
 

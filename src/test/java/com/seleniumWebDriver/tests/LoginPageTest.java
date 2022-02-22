@@ -43,9 +43,8 @@ public class LoginPageTest extends BaseTest {
         driver.get(urlLogIn);
         getLogIn(username, password);
         /*explicit wait*/
-        String logInTitle = username;
         Thread.sleep(5000);
-        assertEquals(logInTitle, loginPage.getLogInText(username));
+        assertEquals(username, loginPage.getLogInText(username));
     }
 
 }

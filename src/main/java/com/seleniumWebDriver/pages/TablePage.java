@@ -1,4 +1,4 @@
-package com.seleniumWebDriver.script;
+package com.seleniumWebDriver.pages;
 
 import com.seleniumWebDriver.ojb.Employees;
 import org.openqa.selenium.By;
@@ -8,27 +8,27 @@ import org.openqa.selenium.WebElement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Table {
+public class TablePage {
     private WebDriver driver;
     private List<Employees> employees = new ArrayList<>();
     private By countPages = By.xpath("//div[@id='example_paginate']//span//a");
     private By rows = By.xpath("//table[@id='example']//tbody//tr");
 
-    public Table(WebDriver driver) {
+    public TablePage(WebDriver driver) {
         this.driver = driver;
     }
 
-    public Table rowSelection(int age, int salary) {
+    public TablePage rowSelection(int age, int salary) {
         Integer pages = driver.findElements(countPages).size();
         for (int i = 1; i <= pages; i++) {
             String page = Integer.toString(i);
-            getRows(age, salary);
+            getEmployees(age, salary);
             driver.findElement(By.xpath("//a[@id='example_next']")).click();
         }
         return this;
     }
 
-    public List<Employees> getRows(int x, int y) {
+    public List<Employees> getEmployees(int x, int y) {
         for (WebElement row : driver.findElements(rows)) {
             String age = row.findElement(By.xpath(".//td[4]")).getText();
             String salary = row.findElement(By.xpath(".//td[6]")).getText();
