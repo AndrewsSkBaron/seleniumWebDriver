@@ -7,31 +7,25 @@ import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 public class Driver {
-    private static org.selenim.driver.Driver driver;
-    private WebDriver webDriver;
-    private String path = "src/main/resources/drivers/geckodriver/geckodriver.exe";
-    private String gecko = "webdriver.gecko.driver";
+    private static WebDriver webDriver;
+    private static String path = "src/main/resources/drivers/geckodriver/geckodriver.exe";
+    private static String gecko = "webdriver.gecko.driver";
 
     private Driver() {
-        System.setProperty(gecko,path);
-        webDriver = new FirefoxDriver();
-        Objects.requireNonNull(webDriver).manage().window().maximize();
-        webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
-
-    public static org.selenim.driver.Driver getInstance() {
-        if (driver == null) {
-            driver = new org.selenim.driver.Driver();
+    public static WebDriver getInstance() {
+        if (webDriver == null) {
+            System.setProperty(gecko,path);
+            webDriver = new FirefoxDriver();
+            Objects.requireNonNull(webDriver).manage().window().maximize();
+            webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         }
-        return driver;
-    }
-
-    public WebDriver getWebDriver() {
         return webDriver;
     }
 
-    public static void getQuit() {
-        getInstance().getWebDriver().quit();
+    public static void quit() {
+        webDriver.quit();
+        webDriver = null;
     }
 }
 
