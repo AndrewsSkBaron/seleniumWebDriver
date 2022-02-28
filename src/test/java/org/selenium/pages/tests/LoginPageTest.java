@@ -1,10 +1,15 @@
 package org.selenium.pages.tests;
 
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Order;
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Story;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+import org.selenim.listener.ListenerEvent;
 import org.selenim.pages.LogInPage;
 import org.selenim.pages.ProfilePage;
 
@@ -13,7 +18,8 @@ import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
-@TestMethodOrder(MethodOrderer.MethodName.class)
+@DisplayName("LogIn Page Test")
+@ExtendWith(ListenerEvent.class)
 public class LoginPageTest extends BaseTest {
     private static LogInPage logInPage;
     private static ProfilePage profilePage;
@@ -22,27 +28,36 @@ public class LoginPageTest extends BaseTest {
 
     public static Stream<Arguments> data() {
         return Stream.of(
-            arguments("LoginTestDriver1", "test0102")
+                arguments("LoginTestDriver1", "test0102")
         );
     }
 
-    @Order(1)
+    @Tag("fast")
     @Test
+    @Epic("Allure examples №1")
+    @Story("id 1")
+    @DisplayName("LogIn")
+    @Description("Checking LogIn page")
+    @MethodSource("data")
     public void checkLogIn() {
-        logInPage = new LogInPage(driver,wait);
+        logInPage = new LogInPage(driver, wait);
         logInPage.loginWithData(username, password);
         String head = logInPage.getInboxText();
-        assertEquals(head, username);
-        screenshot.makeScreen(driver);
+        assertEquals(head, "LoginTestDriver");
     }
 
-    @Order(2)
+    @Tag("fast")
     @Test
+    @Epic("Allure examples №2")
+    @Story("id 2")
+    @DisplayName("LogOut")
+    @Description("Checking LogOut page")
+    @MethodSource("data")
     public void checkLogOut() {
         profilePage = new ProfilePage(driver, wait);
         profilePage.actionLogOut();
-        String logText = "Log in with Yandex ID to access Yandex.Mail";
+        String logText = "Log on with Yandex ID to access Yandex.Mail";
         assertEquals(logText, profilePage.getTextH1());
-        screenshot.makeScreen(driver);
     }
+
 }

@@ -15,7 +15,6 @@ public abstract class BaseTest {
     private static String urlLogIn = "https://mail.yandex.com/";
 
     @BeforeAll
-    @MethodSource("data")
     public static void setUp() {
         screenshot = new WebDriverUtils();
         driver.get(urlLogIn);
@@ -24,7 +23,6 @@ public abstract class BaseTest {
     }
 
     @AfterAll
-    @MethodSource("data")
     public static void tearDown() {
         Driver.quit();
         System.out.println("<----- | Browser Session End | ----->");

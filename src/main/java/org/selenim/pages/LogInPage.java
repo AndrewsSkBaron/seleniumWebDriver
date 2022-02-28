@@ -67,5 +67,4 @@ public class LogInPage {
         return driver.findElement(errorPassword).getText();
     }
 
-
 }
