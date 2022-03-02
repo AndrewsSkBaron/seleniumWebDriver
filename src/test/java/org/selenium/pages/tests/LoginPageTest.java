@@ -6,10 +6,8 @@ import io.qameta.allure.Story;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.selenim.listener.ListenerEvent;
 import org.selenim.pages.LogInPage;
 import org.selenim.pages.ProfilePage;
 
@@ -19,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 @DisplayName("LogIn Page Test")
-@ExtendWith(ListenerEvent.class)
+
 public class LoginPageTest extends BaseTest {
     private static LogInPage logInPage;
     private static ProfilePage profilePage;
@@ -56,7 +54,7 @@ public class LoginPageTest extends BaseTest {
     public void checkLogOut() {
         profilePage = new ProfilePage(driver, wait);
         profilePage.actionLogOut();
-        String logText = "Log on with Yandex ID to access Yandex.Mail";
+        String logText = "Log in with Yandex ID to access Yandex.Mail";
         assertEquals(logText, profilePage.getTextH1());
     }
 
