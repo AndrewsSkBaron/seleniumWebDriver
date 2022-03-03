@@ -16,7 +16,7 @@ public class DownloadPage {
         this.wait = wait;
     }
 
-    public WebElement download() {
+    public WebElement refresh() {
         driver.findElement(By.xpath(button)).click();
         wait.until((ExpectedCondition<Boolean>) d -> {
             WebElement element = Objects.requireNonNull(d).findElement(By.xpath(percent));

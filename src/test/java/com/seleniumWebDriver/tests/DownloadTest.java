@@ -14,8 +14,8 @@ public class DownloadTest extends BaseTest {
     public void checkSelectRandom() {
         driver.get(urlDownload);
         download = new DownloadPage(driver, wait);
-        num = Integer.parseInt(download.download().getAttribute("value"));
-        download.download();
+        download.refresh();
+        num = Integer.parseInt(download.refresh().getAttribute("value"));
         assertTrue(num == 0);
     }
 }

@@ -17,7 +17,7 @@ public class LoginPageTest extends BaseTest {
 
     @Before
     public void getLogIn(String username, String password) {
-        loginPage = new LogInPage(driver);
+        loginPage = new LogInPage(driver, wait);
         loginPage.loginWithData(username,password);
     }
 
