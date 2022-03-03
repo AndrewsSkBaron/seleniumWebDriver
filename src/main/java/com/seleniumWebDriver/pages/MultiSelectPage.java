@@ -45,8 +45,7 @@ public class MultiSelectPage {
             }
             lastLast = last;
             last = randomNumber;
-            builder.keyDown(Keys.CONTROL).moveToElement(select.getOptions().get(randomNumber)).click();
-            builder.perform();
+            select.selectByIndex(randomNumber);
         }
         button.click();
         return this;
