@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.selenim.listener.ListenerEvent;
 import org.openqa.selenium.By;
 import org.selenim.pages.LogInPage;
 import org.selenim.pages.ProfilePage;
