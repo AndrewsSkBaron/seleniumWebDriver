@@ -19,6 +19,21 @@ public abstract class BaseTest {
         screenshot = new WebDriverUtils();
         driver.get(urlLogIn);
         wait = new WebDriverWait(driver, 30);
+import org.selenim.driver.Driver;
+
+public abstract class BaseTest {
+    protected static WebDriver driver;
+    private static String urlLogIn = "https://mail.yandex.com/";
+
+    private static String path = "src/main/resources/drivers/geckodriver/geckodriver.exe";
+    private static String gecko = "webdriver.gecko.driver";
+
+    @BeforeAll
+    @MethodSource("data")
+    public static void setUp() {
+        driver = Driver.getInstance();
+        driver.get(urlLogIn);
+
         System.out.println("<----- | Browser Session Started | ----->");
     }
 
