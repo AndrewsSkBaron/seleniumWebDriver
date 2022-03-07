@@ -1,3 +1,4 @@
+import org.junit.runner.JUnitCore;
 import com.seleniumWebDriver.pages.TablePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;

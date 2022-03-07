@@ -107,5 +107,4 @@ public class LogInPage {
         return errorPassword.getText();
     }
 
-
 }
