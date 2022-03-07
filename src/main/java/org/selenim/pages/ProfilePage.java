@@ -16,7 +16,7 @@ public class ProfilePage {
     private By userIcon = By.xpath("//div[@class='legouser legouser_fetch-accounts_yes legouser_hidden_yes i-bem']/a[1]");
     private By logOutLink = By.xpath("//a[@aria-label='Log out']");
     private By logOutLinkText = By.xpath("//a[@aria-label='Log out']/span");
-    private By h1 = By.xpath("//h1[@class='passp-title ']");
+    private By h1 = By.xpath("//div[@class='HeadBanner-Title']");
 
     public ProfilePage(WebDriver driver, WebDriverWait wait) {
         this.driver = driver;

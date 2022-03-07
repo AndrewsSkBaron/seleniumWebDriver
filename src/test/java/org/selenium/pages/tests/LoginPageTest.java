@@ -23,7 +23,7 @@ import static org.junit.jupiter.params.provider.Arguments.arguments;
 public class LoginPageTest extends BaseTest {
     private static LogInPage logInPage;
     private static ProfilePage profilePage;
-    private static String username = "LoginTestDriver1";
+    private static String username = "LoginTestDriver3";
     private static String password = "test0102";
 
     public static Stream<Arguments> data() {
@@ -84,7 +84,8 @@ public class LoginPageTest extends BaseTest {
         profilePage = new ProfilePage(driver);
         String logOutTitle = driver.findElement(By.xpath("//h1[@class='passp-title ']")).getText();
         profilePage.actionLogOut();
-        String logText = "Log in with Yandex ID to access Yandex.Mail";
+        String logText = "Sincerely yours,\n" +
+                "Yandex.Mail";
         assertEquals(logText, profilePage.getTextH1());
     }
 
