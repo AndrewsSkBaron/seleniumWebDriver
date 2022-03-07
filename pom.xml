@@ -37,6 +37,13 @@
             <version>5.8.2</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.6</version>
+        </dependency>
+
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-params</artifactId>
@@ -55,8 +62,8 @@
             <artifactId>junit</artifactId>
             <version>4.13.2</version>
         </dependency>
-
     </dependencies>
+
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>

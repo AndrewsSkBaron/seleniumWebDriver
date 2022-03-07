@@ -18,4 +18,8 @@ public class Main {
         tablePage.rowSelection(33, 120000);
         System.out.println(tablePage.getEmployees(33, 120000));
     }
+
+public class Main {
+    public static void main(String[] args) {
+
 }
