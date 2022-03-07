@@ -9,6 +9,19 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated;
 
 public class ProfilePage {
+
+    /*Page Object*/
+    private WebDriver driver;
+    private WebDriverWait wait;
+    private By userIcon = By.xpath("//div[@class='legouser legouser_fetch-accounts_yes legouser_hidden_yes i-bem']/a[1]");
+    private By logOutLink = By.xpath("//a[@aria-label='Log out']");
+    private By logOutLinkText = By.xpath("//a[@aria-label='Log out']/span");
+    private By h1 = By.xpath("//h1[@class='passp-title ']");
+
+    public ProfilePage(WebDriver driver, WebDriverWait wait) {
+        this.driver = driver;
+        this.wait = wait;
+
     /*Page Factory*/
 
     private WebDriver driver;
@@ -45,6 +58,10 @@ public class ProfilePage {
         return logOutLinkText.getText();
     }
 
+    public String getTextH1(){
+        return driver.findElement(h1).getText();
+    }
+
     public ProfilePage clickLogOutLink(){
         logOutLink.click();
         return this;
@@ -54,7 +71,7 @@ public class ProfilePage {
         this.clickUserIcon();
         this.getTextLogOut();
         this.clickLogOutLink();
-        return new ProfilePage(driver);
+        return this;
     }
 
 }

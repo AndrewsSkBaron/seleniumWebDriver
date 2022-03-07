@@ -1,9 +1,15 @@
 package org.selenim.pages;
 
 import org.openqa.selenium.WebDriver;
+
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
 
 public class LogInPage {
 
@@ -37,6 +43,7 @@ public class LogInPage {
 
     /*Page Object*/
     private WebDriver driver;
+    private WebDriverWait wait;
 
     private By signInButtonOnHome = By.xpath("//div[@class='HeadBanner-ButtonsWrapper']/a[2]");
     private By loginField = By.xpath("//input[@id='passp-field-login']");
@@ -47,9 +54,15 @@ public class LogInPage {
     private By errorLogin= By.xpath("//div[@id='field:input-login:hint']");
     private By errorPassword = By.xpath("//div[@id='field:input-passwd:hint']");
 
+
+    public LogInPage(WebDriver driver,WebDriverWait wait) {
+        this.driver = driver;
+        this.wait = wait;
+
     public LogInPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
+
     }
 
     public LogInPage clickButton(){
@@ -78,6 +91,7 @@ public class LogInPage {
         this.clickButton();
         this.typeUsername(username);
         this.typePassword(password);
+        wait.until(visibilityOfElementLocated(logInTitle));
         return this;
     }
 
