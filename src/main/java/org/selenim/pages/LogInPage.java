@@ -1,9 +1,40 @@
 package org.selenim.pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class LogInPage {
+
+    /*Page Factory*/
+    private WebDriver driver;
+
+    @FindBy(xpath = "//div[@class='HeadBanner-ButtonsWrapper']/a[2]")
+    private WebElement signInButtonOnHome;
+
+    @FindBy(xpath = "//input[@id='passp-field-login']")
+    private WebElement loginField;
+
+    @FindBy(xpath = "//input[@id='passp-field-passwd']")
+    private WebElement passwordField;
+
+    @FindBy(xpath = "//button[@id='passp:sign-in']")
+    private WebElement signInButton;
+
+    @FindBy(xpath = "//h1[contains(@class,'passp-title')]//span")
+    private WebElement heading;
+
+    @FindBy(xpath = "//span[normalize-space()='LoginTestDriver2']")
+    private WebElement logInTitle;
+
+    @FindBy(xpath = "//div[@id='field:input-login:hint']")
+    private WebElement errorLogin;
+
+    @FindBy(xpath = "//div[@id='field:input-passwd:hint']")
+    private WebElement errorPassword;
+
+
     /*Page Object*/
     private WebDriver driver;
 
@@ -18,26 +49,28 @@ public class LogInPage {
 
     public LogInPage(WebDriver driver) {
         this.driver = driver;
+        PageFactory.initElements(driver, this);
     }
 
     public LogInPage clickButton(){
-        driver.findElement(signInButtonOnHome).click();
+        signInButtonOnHome.click();
         return this;
     }
 
     public LogInPage typeUsername(String username){
-        driver.findElement(loginField).sendKeys(username);
-        driver.findElement(signInButton).click();
+        loginField.sendKeys(username);
+        signInButton.click();
         return this;
     }
 
     public LogInPage typePassword(String password){
-        driver.findElement(passwordField).sendKeys(password);
-        driver.findElement(signInButton).submit();
+        passwordField.sendKeys(password);
+        signInButton.submit();
         return this;
     }
 
     public String getInboxText(){
+        return logInTitle.getText();
         return driver.findElement(logInTitle).getText();
     }
 
@@ -45,19 +78,19 @@ public class LogInPage {
         this.clickButton();
         this.typeUsername(username);
         this.typePassword(password);
-        return new LogInPage(driver);
+        return this;
     }
 
     public String getHeadingText(){
-        return driver.findElement(heading).getText();
+        return heading.getText();
     }
 
     public String getErrorLoginText(){
-        return driver.findElement(errorLogin).getText();
+        return errorLogin.getText();
     }
 
     public String getErrorPasswordText(){
-        return driver.findElement(errorPassword).getText();
+        return errorPassword.getText();
     }
 
 
