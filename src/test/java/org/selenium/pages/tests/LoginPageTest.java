@@ -17,6 +17,7 @@ import static org.junit.jupiter.params.provider.Arguments.arguments;
 @TestMethodOrder(MethodOrderer.MethodName.class)
 public class LoginPageTest extends BaseTest {
 
+
     private LogInPage logInPage;
     private ProfilePage profilePage;
     private String username = "LoginTestDriver2";
@@ -25,6 +26,15 @@ public class LoginPageTest extends BaseTest {
     public static Stream<Arguments> data() {
         return Stream.of(
                 arguments("LoginTestDriver2", "test20102")
+
+    private LogInPage logInPage;
+    private ProfilePage profilePage;
+    private String username = "LoginTestDriver1";
+    private String password = "test0102";
+
+    public static Stream<Arguments> data() {
+        return Stream.of(
+                arguments("LoginTestDriver1", "test0102")
         );
     }
 
@@ -34,7 +44,7 @@ public class LoginPageTest extends BaseTest {
         logInPage = new LogInPage(driver);
         logInPage.loginWithData(username, password);
         String head = logInPage.getInboxText();
-        String inboxTitle = "LoginTestDriver2";
+        String inboxTitle = "LoginTestDriver1";
         assertEquals(head, inboxTitle);
     }
 
